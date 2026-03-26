@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class TrainingSheet {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String exerciceName;
     private Integer repsNumber;
     private Integer seriesNumber;

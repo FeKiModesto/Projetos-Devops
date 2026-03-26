@@ -31,8 +31,8 @@ public class TrainingSheetSerice {
     }
 
     public TrainingSheet updateTraining(Long id ,TrainingSheet training) {
-        TrainingSheet oldTraining = getTrainingById(id);
-        BeanUtils.copyProperties(oldTraining, training , "id");
+        getTrainingById(id);
+        training.setId(id);
         return repository.save(training);
     }
 

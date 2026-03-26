@@ -31,8 +31,8 @@ public class GymStudentService {
     }
 
     public GymStudent updateStudent(Long id, GymStudent student) {
-        GymStudent old = getStudentById(id);
-        BeanUtils.copyProperties(student, old, "id");
+        getStudentById(id);
+        student.setId(id);
         return repository.save(student);
     }
 
