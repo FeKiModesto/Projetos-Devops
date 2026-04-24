@@ -1,16 +1,14 @@
-package fiap.com.br.appAcademia.models;
+package fiap.com.br.cp2Aluno.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDate;
 
 @Entity
 @Data
-public class GymStudent {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Aluno {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
