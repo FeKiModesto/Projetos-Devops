@@ -3,9 +3,6 @@
 ## Descrição
 API REST para CRUD de alunos, desenvolvida em Spring Boot, com MySQL containerizado, rodando em VM na Azure.
 
-**Repositório GitHub:**  
-[FeKiModesto/Projetos-Devops](https://github.com/FeKiModesto/Projetos-Devops)
-
 ---
 
 ## Endereço da API (via IP público da VM)
@@ -14,7 +11,7 @@ http://172.209.217.223:8080/alunos
 
 ---
 
-## Como testar (via terminal, Postman ou `curl`)
+## Como testar (via terminal, Postman ou `curl`):
 
 ### 1. Listar todos os alunos (GET)
 
@@ -22,18 +19,18 @@ http://172.209.217.223:8080/alunos
 curl http://172.209.217.223:8080/alunos
 ```
 
-### 2. Buscar aluno por ID (GET)
-
-```bash
-curl http://172.209.217.223:8080/alunos/1
-```
-
-### 3. Criar novo aluno (POST)
+### 2. Criar novo aluno (POST)
 
 ```bash
 curl -X POST http://172.209.217.223:8080/alunos \
   -H "Content-Type: application/json" \
   -d '{"name":"João Silva","cpf":"12345678900","age":30,"birthDate":"1994-05-20"}'
+```
+
+### 3. Buscar aluno por ID (GET)
+
+```bash
+curl http://172.209.217.223:8080/alunos/1
 ```
 
 ### 4. Atualizar aluno (PUT)
@@ -49,73 +46,25 @@ curl -X PUT http://172.209.217.223:8080/alunos/1 \
 ```bash
 curl -X DELETE http://172.209.217.223:8080/alunos/1
 ```
-### 6. Testar com detalhes da requisição (-v)
+
+## Rodando com Docker Compose (na VM)
+
+Se quiser executar o projeto dentro da VM ou localmente, use:
 
 ```bash
-curl -v http://172.209.217.223:8080/alunos
+docker-compose up -d --build
 ```
 
-## Execução manual na VM (sem Docker Compose)
-
-Após enviar o JAR para a VM:
-
-### 1. Rodar a aplicação em background
-
-```bash
-nohup java -jar cp2-alunos-0.0.1-SNAPSHOT.jar > log.txt 2>&1 &
-```
-
-### 2. Acompanhar os logs em tempo real
-
-```bash
-tail -f log.txt
-```
-
-### 3. Testar a API localmente (dentro da VM)
-
-```bash
-curl -v http://localhost:8080/alunos
-```
-### 4. Testar a API pelo IP público (de qualquer lugar)
-
-```bash
-curl -v http://172.209.217.223:8080/alunos
-```
-
-### 5. Parar a aplicação
-
-```bash
-pkill -f cp2-alunos-0.0.1-SNAPSHOT.jar
-```
-## Containerização (Docker)
-
-### Tecnologias utilizadas
-
-- MySQL 8.0 (container)
-- Aplicação Java Spring Boot (containerizada via Dockerfile)
-
-### Arquivos (na raiz do projeto)
-
-- Dockerfile → define imagem da aplicação Java
-- docker-compose.yml → sobe MySQL + API juntos
-
-### Subir tudo com Docker Compose (na VM ou local)
-
-```bash
-docker-compose up -d
-```
-
-### Parar todos os containers
+Parar os containers:
 
 ```bash
 docker-compose down
 ```
 
-## Infraestrutura em Nuvem
-
-- VM Oracle Cloud – criada conforme requisito do professor (50% da nota)
-- VM Azure Cloud – rodando a aplicação + MySQL (AlmaLinux 10)
-
+Ver logs da API:
+```bash
+docker logs -f cp2-api
+```
 ## Tecnologias utilizadas
 
 <table style="width: 100%; border-collapse: collapse;">
@@ -147,13 +96,13 @@ docker-compose down
 
 ## Status do Projeto
 
-- VM na Oracle criada
-- VM na Azure com MySQL containerizado
-- API Spring Boot conectando ao banco remoto
-- CRUD funcionando via IP público
-- Código versionado no GitHub
-- README com instruções completas
-- Dockerfile e docker-compose (prontos para uso/complementares)
+- [x] VM na Oracle criada
+- [x] VM na Azure com MySQL containerizado
+- [x] API Spring Boot conectando ao banco remoto
+- [x] CRUD funcionando via IP público
+- [x] Código versionado no GitHub
+- [x] README com instruções completas
+- [x] Dockerfile e docker-compose prontos para uso
 
 # Autor
 
